@@ -16,3 +16,5 @@ import "./helpers/UniERC20.sol";
 contract OneInchExchange is Ownable, Pausable {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
+    using UniERC20 for IERC20;
+
