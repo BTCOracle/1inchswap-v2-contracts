@@ -18,3 +18,10 @@ contract OneInchExchange is Ownable, Pausable {
     using SafeERC20 for IERC20;
     using UniERC20 for IERC20;
 
+    uint256 private constant _PARTIAL_FILL = 0x01;
+    uint256 private constant _REQUIRES_EXTRA_ETH = 0x02;
+    uint256 private constant _SHOULD_CLAIM = 0x04;
+    uint256 private constant _BURN_FROM_MSG_SENDER = 0x08;
+    uint256 private constant _BURN_FROM_TX_ORIGIN = 0x10;
+
+    struct SwapDescription {
