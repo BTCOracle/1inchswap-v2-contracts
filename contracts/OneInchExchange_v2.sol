@@ -25,3 +25,4 @@ contract OneInchExchange is Ownable, Pausable {
     uint256 private constant _BURN_FROM_TX_ORIGIN = 0x10;
 
     struct SwapDescription {
+        IERC20 srcToken;
