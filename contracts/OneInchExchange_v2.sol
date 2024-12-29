@@ -26,3 +26,7 @@ contract OneInchExchange is Ownable, Pausable {
 
     struct SwapDescription {
         IERC20 srcToken;
+        IERC20 dstToken;
+        address srcReceiver;
+        address dstReceiver;
+        uint256 amount;
