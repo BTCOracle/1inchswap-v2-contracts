@@ -30,3 +30,15 @@ contract OneInchExchange is Ownable, Pausable {
         address srcReceiver;
         address dstReceiver;
         uint256 amount;
+        uint256 minReturnAmount;
+        uint256 guaranteedAmount;
+        uint256 flags;
+        address referrer;
+        bytes permit;
+    }
+
+    event Swapped(
+        address indexed sender,
+        IERC20 indexed srcToken,
+        IERC20 indexed dstToken,
+        address dstReceiver,
