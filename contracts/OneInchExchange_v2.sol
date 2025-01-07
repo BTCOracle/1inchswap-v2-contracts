@@ -42,3 +42,8 @@ contract OneInchExchange is Ownable, Pausable {
         IERC20 indexed srcToken,
         IERC20 indexed dstToken,
         address dstReceiver,
+        uint256 amount,
+        uint256 spentAmount,
+        uint256 returnAmount,
+        uint256 minReturnAmount,
+        uint256 guaranteedAmount,
