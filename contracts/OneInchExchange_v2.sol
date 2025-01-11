@@ -47,3 +47,12 @@ contract OneInchExchange is Ownable, Pausable {
         uint256 returnAmount,
         uint256 minReturnAmount,
         uint256 guaranteedAmount,
+        address referrer
+    );
+
+    event Error(
+        string reason
+    );
+
+    function discountedSwap(
+        IOneInchCaller caller,
