@@ -56,3 +56,9 @@ contract OneInchExchange is Ownable, Pausable {
 
     function discountedSwap(
         IOneInchCaller caller,
+        SwapDescription calldata desc,
+        IOneInchCaller.CallDescription[] calldata calls
+    )
+        external
+        payable
+        returns (uint256 returnAmount)
