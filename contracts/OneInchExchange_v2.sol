@@ -63,3 +63,7 @@ contract OneInchExchange is Ownable, Pausable {
         payable
         returns (uint256 returnAmount)
     {
+        uint256 initialGas = gasleft();
+
+        address chiSource = address(0);
+        if (desc.flags & _BURN_FROM_MSG_SENDER != 0) {
