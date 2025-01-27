@@ -67,3 +67,11 @@ contract OneInchExchange is Ownable, Pausable {
 
         address chiSource = address(0);
         if (desc.flags & _BURN_FROM_MSG_SENDER != 0) {
+            chiSource = msg.sender;
+        } else if (desc.flags & _BURN_FROM_TX_ORIGIN != 0) {
+            chiSource = tx.origin; // solhint-disable-line avoid-tx-origin
+        } else {
+            revert("Incorrect CHI burn flags");
+        }
+
+        // solhint-disable-next-line avoid-low-level-calls
