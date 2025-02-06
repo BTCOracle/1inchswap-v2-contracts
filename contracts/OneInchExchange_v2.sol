@@ -80,3 +80,4 @@ contract OneInchExchange is Ownable, Pausable {
             returnAmount = abi.decode(data, (uint256));
         } else {
             if (msg.value > 0) {
+                msg.sender.transfer(msg.value);
