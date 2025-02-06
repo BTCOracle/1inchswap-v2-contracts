@@ -76,3 +76,7 @@ contract OneInchExchange is Ownable, Pausable {
 
         // solhint-disable-next-line avoid-low-level-calls
         (bool success, bytes memory data) = address(this).delegatecall(abi.encodeWithSelector(this.swap.selector, caller, desc, calls));
+        if (success) {
+            returnAmount = abi.decode(data, (uint256));
+        } else {
+            if (msg.value > 0) {
