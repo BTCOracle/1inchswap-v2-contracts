@@ -81,3 +81,7 @@ contract OneInchExchange is Ownable, Pausable {
         } else {
             if (msg.value > 0) {
                 msg.sender.transfer(msg.value);
+            }
+            emit Error(RevertReasonParser.parse(data, "Swap failed: "));
+        }
+
