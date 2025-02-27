@@ -85,3 +85,14 @@ contract OneInchExchange is Ownable, Pausable {
             emit Error(RevertReasonParser.parse(data, "Swap failed: "));
         }
 
+        (IChi chi, uint256 amount) = caller.calculateGas(initialGas.sub(gasleft()), desc.flags, msg.data.length);
+        chi.freeFromUpTo(chiSource, amount);
+    }
+
+    function swap(
+        IOneInchCaller caller,
+        SwapDescription calldata desc,
+        IOneInchCaller.CallDescription[] calldata calls
+    )
+        external
+        payable
