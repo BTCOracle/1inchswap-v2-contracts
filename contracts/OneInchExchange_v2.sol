@@ -96,3 +96,11 @@ contract OneInchExchange is Ownable, Pausable {
     )
         external
         payable
+        whenNotPaused
+        returns (uint256 returnAmount)
+    {
+        require(desc.minReturnAmount > 0, "Min return should not be 0");
+        require(calls.length > 0, "Call data should exist");
+
+        uint256 flags = desc.flags;
+        IERC20 srcToken = desc.srcToken;
