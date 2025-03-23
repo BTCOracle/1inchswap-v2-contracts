@@ -113,3 +113,9 @@ contract OneInchExchange is Ownable, Pausable {
         }
 
         if (flags & _SHOULD_CLAIM != 0) {
+            require(!srcToken.isETH(), "Claim token is ETH");
+            _claim(srcToken, desc.srcReceiver, desc.amount, desc.permit);
+        }
+
+        address dstReceiver = (desc.dstReceiver == address(0)) ? msg.sender : desc.dstReceiver;
+        uint256 initialSrcBalance = (flags & _PARTIAL_FILL != 0) ? srcToken.uniBalanceOf(msg.sender) : 0;
