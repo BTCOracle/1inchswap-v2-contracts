@@ -119,3 +119,9 @@ contract OneInchExchange is Ownable, Pausable {
 
         address dstReceiver = (desc.dstReceiver == address(0)) ? msg.sender : desc.dstReceiver;
         uint256 initialSrcBalance = (flags & _PARTIAL_FILL != 0) ? srcToken.uniBalanceOf(msg.sender) : 0;
+        uint256 initialDstBalance = dstToken.uniBalanceOf(dstReceiver);
+
+        caller.makeCalls{value: msg.value}(calls);
+
+        uint256 spentAmount = desc.amount;
+        returnAmount = dstToken.uniBalanceOf(dstReceiver).sub(initialDstBalance);
