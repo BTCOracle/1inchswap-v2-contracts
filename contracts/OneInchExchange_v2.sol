@@ -125,3 +125,5 @@ contract OneInchExchange is Ownable, Pausable {
 
         uint256 spentAmount = desc.amount;
         returnAmount = dstToken.uniBalanceOf(dstReceiver).sub(initialDstBalance);
+
+        if (flags & _PARTIAL_FILL != 0) {
