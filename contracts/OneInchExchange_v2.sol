@@ -127,3 +127,5 @@ contract OneInchExchange is Ownable, Pausable {
         returnAmount = dstToken.uniBalanceOf(dstReceiver).sub(initialDstBalance);
 
         if (flags & _PARTIAL_FILL != 0) {
+            spentAmount = initialSrcBalance.add(desc.amount).sub(srcToken.uniBalanceOf(msg.sender));
+            require(returnAmount.mul(desc.amount) >= desc.minReturnAmount.mul(spentAmount), "Return amount is not enough");
