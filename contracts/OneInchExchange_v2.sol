@@ -132,3 +132,8 @@ contract OneInchExchange is Ownable, Pausable {
         } else {
             require(returnAmount >= desc.minReturnAmount, "Return amount is not enough");
         }
+
+        _emitSwapped(desc, srcToken, dstToken, dstReceiver, spentAmount, returnAmount);
+    }
+
+    function _emitSwapped(
