@@ -137,3 +137,8 @@ contract OneInchExchange is Ownable, Pausable {
     }
 
     function _emitSwapped(
+        SwapDescription calldata desc,
+        IERC20 srcToken,
+        IERC20 dstToken,
+        address dstReceiver,
+        uint256 spentAmount,
