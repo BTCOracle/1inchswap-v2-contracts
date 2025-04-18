@@ -142,3 +142,4 @@ contract OneInchExchange is Ownable, Pausable {
         IERC20 dstToken,
         address dstReceiver,
         uint256 spentAmount,
+        uint256 returnAmount
