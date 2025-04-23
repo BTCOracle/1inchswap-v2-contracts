@@ -143,3 +143,11 @@ contract OneInchExchange is Ownable, Pausable {
         address dstReceiver,
         uint256 spentAmount,
         uint256 returnAmount
+     ) private {
+        emit Swapped(
+            msg.sender,
+            srcToken,
+            dstToken,
+            dstReceiver,
+            desc.amount,
+            spentAmount,
