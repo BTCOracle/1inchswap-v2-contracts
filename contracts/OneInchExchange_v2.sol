@@ -151,3 +151,8 @@ contract OneInchExchange is Ownable, Pausable {
             dstReceiver,
             desc.amount,
             spentAmount,
+            returnAmount,
+            desc.minReturnAmount,
+            desc.guaranteedAmount,
+            desc.referrer
+        );
